@@ -9,11 +9,27 @@ var myApp = new o({
     ],
     init: function (config) {
         this.$.myStore.listen('updated', this.storeUpdated);
+
     },
     storeUpdated: function (store) {
-        console.log('the store was updated');
+        console.log(store.viewstate.foo);
     }
 });
 
 myApp.init();
-myApp.$.myStore.update({ viewstate: {}, collection: [] });
+
+myApp.$.myStore.reducer(function(data){
+    if(data.viewstate.foo) {
+        data.viewstate.foo = 'reduced';
+    }
+    return data;
+});
+
+myApp.$.myStore.reducer(function(data){
+    if(data.viewstate.foo && data.viewstate.foo === 'reduced') {
+        data.viewstate.foo = 're-reduced';
+    }
+    return data;
+});
+
+myApp.$.myStore.update({ viewstate: {foo:'bar'}, collection: [] });
