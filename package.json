@@ -1,0 +1,21 @@
+{
+  "name": "o",
+  "version": "0.0.1",
+  "description": "create concise, applications with a light foot print",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmikey/o.git"
+  },
+  "author": "Derek M. Anderson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmikey/o/issues"
+  },
+  "homepage": "https://github.com/dmikey/o#readme",
+  "devDependencies": {
+  }
+}
