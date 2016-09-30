@@ -1,7 +1,7 @@
 module.exports = {
     entry: "./index.js",
     output: {
-        filename: "o.min.js",
+        filename: "yooj.min.js",
         libraryTarget: "umd"
     }
 }

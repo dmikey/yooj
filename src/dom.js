@@ -1,7 +1,6 @@
 var o = require('./core');
 
 module.exports = new o({
-    'name': 'dom',
     'tag': 'div',
     'init': function () {
         this.node = document.createElement(this.tag);
@@ -9,46 +8,46 @@ module.exports = new o({
     'render': function() {
         // if this component has components, render the components
         // otherwise render the content
-        if(this.hasComponents()) {
-            this.renderComponents();
+        if(this['hasComponents']()) {
+            this['renderComponents']();
         } else {
-            this.renderContent();
+            this['renderContent']();
         }
 
         // notify rendered
-        this.notify('rendered', {});
+        this['notify']('rendered', {});
     },
     'renderContent': function() {
         // if there is no template, and this component
         // has content, return the content, otherwise render the template
-        if(!this.template && this.content) {
-            this.node.innerHTML = this.content;
+        if(!this['template'] && this['content']) {
+            this.node.innerHTML = this['content'];
         } else {
             // render template
-            var str = this.renderTemplate();
+            var str = this['renderTemplate']();
             this.node.innerHTML = str;
         }
     },
     'renderComponents': function() {
         // render all components that belong to this component
-        for (var i = 0; i < this.components.length; i++) {
-            if(this.components[i].render) {
-                this.components[i].render();
-                this.components[i].attach(this.node);
+        for (var i = 0; i < this['components'].length; i++) {
+            if(this['components'][i]['render']) {
+                this['components'][i]['render']();
+                this['components'][i]['attach'](this.node);
             }
         };
     },
     'attach': function(target) {
         // attaches node to DOM
         target.appendChild(this.node);
-        this.wireEvents();
-        this.notify('attached', {});
+        this['wireEvents']();
+        this['notify']('attached', {});
     },
     'detach': function() {
         // removed node from it's parent, and removes events 
         // attached to node
         var unwire = true;
-        this.wireEvents(unwire);
+        this['wireEvents'](unwire);
         this.node.parentNode.removeChild(this.node);
     },
     'wireEvents': function(unwire) {

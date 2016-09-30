@@ -1,21 +1,21 @@
 {
-  "name": "o",
+  "name": "yooj",
   "version": "0.0.1",
-  "description": "create concise, applications with a light foot print",
+  "description": "easy, concise, applications with a light foot print",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dmikey/o.git"
+    "url": "git+https://github.com/dmikey/yooj.git"
   },
   "author": "Derek M. Anderson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dmikey/o/issues"
+    "url": "https://github.com/dmikey/yooj/issues"
   },
-  "homepage": "https://github.com/dmikey/o#readme",
+  "homepage": "https://github.com/dmikey/yooj#readme",
   "devDependencies": {
     "google-closure-compiler": "^20160911.0.0",
     "gulp": "^3.9.1",

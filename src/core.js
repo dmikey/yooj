@@ -22,10 +22,10 @@ function o(definition) {
 
 // create $ hash of components names for easier lookup
 var registerComponents = function registerComponents() {
-      if(this.components) {
-        for (var i = 0; i < this.components.length; i++) {
-            if(this.components[i]['name'] && !this.$[this.components[i]['name']]) {
-                this.$[this.components[i]['name']] = this.components[i];
+      if(this['components']) {
+        for (var i = 0; i < this['components'].length; i++) {
+            if(this['components'][i]['name'] && !this.$[this['components'][i]['name']]) {
+                this.$[this['components'][i]['name']] = this['components'][i];
             }
         };
     }
