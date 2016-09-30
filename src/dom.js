@@ -1,9 +1,29 @@
 var o = require('./core');
 
+// debounce, for our throttled dispatch event
+function debounce(fn, delay) {
+    var timer = null;
+    return function () {
+        var context = this,
+            args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            fn.apply(context, args);
+        }, delay);
+    };
+};
+
 module.exports = new o({
     'tag': 'div',
     'init': function () {
         this.node = document.createElement(this.tag);
+        this.update = debounce(this.update, 60); //debounce by 60ms
+    },
+    'update': function(data) {
+        this['mix'](data);
+        this['render']();
+
+        this['notify']('updated', {});
     },
     'render': function() {
         // if this component has components, render the components
@@ -21,11 +41,15 @@ module.exports = new o({
         // if there is no template, and this component
         // has content, return the content, otherwise render the template
         if(!this['template'] && this['content']) {
-            this.node.innerHTML = this['content'];
+            window.requestAnimationFrame(function(){
+                this.node.innerHTML = this['content'];
+            }.bind(this));
         } else {
             // render template
-            var str = this['renderTemplate']();
-            this.node.innerHTML = str;
+            window.requestAnimationFrame(function(){
+                var str = this['renderTemplate']();
+                this.node.innerHTML = str;
+            }.bind(this));
         }
     },
     'renderComponents': function() {

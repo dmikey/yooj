@@ -18,7 +18,7 @@ gulp.task('default', ['lint'], function() {
             warning_level: 'QUIET',
             language_in: 'ECMASCRIPT6_STRICT',
             language_out: 'ECMASCRIPT3',
-            output_wrapper: '(function(scope){\n%output%\n if("undefined"===typeof define) window.yooj = f()}).call(this)',
+            output_wrapper: '(function(){\n%output%\n if("undefined"===typeof define) window.yooj = f()}).call(this)',
             js_output_file: 'yooj.min.js'
         }))
         .pipe(gulp.dest('./dist'));
